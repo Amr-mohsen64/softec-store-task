@@ -4,9 +4,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ProductCardComponent } from './components/products/product-card/product-card.component';
+import { ProductsComponent } from './components/products/products/products.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
+  declarations: [AppComponent, NavbarComponent, ProductCardComponent, ProductsComponent, FooterComponent],
   imports: [BrowserModule, NgbModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
