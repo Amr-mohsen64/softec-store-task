@@ -10,7 +10,11 @@
   }
   &__content {
     height: 100%;
-    background: linear-gradient(180deg, #ecfafc 0%, #ffffff 100%);
+    background-color: linear-gradient(180deg, #ecfafc 0%, #ffffff 100%);
+
+    &.highlighted {
+      background-color: rgb(235 255 218);
+    }
 
     &__name {
       color: rgb(57, 57, 57);

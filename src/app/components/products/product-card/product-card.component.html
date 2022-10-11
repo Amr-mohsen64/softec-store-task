@@ -2,7 +2,7 @@
   <div class="product__card__img__wrapper">
     <img [src]="product?.ProductImg" [alt]="product?.ProductName">
   </div>
-  <div class="product__card__content p-3">
+  <div class="product__card__content p-3" [ngClass]="{'highlighted':product!.AvailablePieces < 5}">
     <h5 class="product__card__content__name">{{product?.ProductName}}</h5>
     <div class="d-flex justify-content-between align-items-center">
       <p class=" fw-bold product__card__content__price">{{product?.ProductPrice | currency}}</p>
