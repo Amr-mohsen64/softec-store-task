@@ -8,6 +8,12 @@
       <p class=" fw-bold product__card__content__price">{{product?.ProductPrice | currency}}</p>
       <p class="fw-bold">QTY: {{product?.AvailablePieces}}</p>
     </div>
-    <button class="product__card__content__cart__add">Add To Cart</button>
+    <div class="d-flex justify-content-between align-items-center">
+      <button class="product__card__content__cart__add" [ngClass]="isEdit ? 'w-75' : 'w-100'">Add To
+        Cart</button>
+      <i class="fa fa-pencil product__card__content__cart__edit" aria-hidden="true" (click)="onEditProduct()"
+        *ngIf="isEdit"></i>
+    </div>
+
   </div>
 </section>
