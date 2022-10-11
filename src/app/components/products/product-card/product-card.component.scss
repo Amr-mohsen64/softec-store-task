@@ -1,0 +1,36 @@
+@import "../../../../assets/scss/variables.scss";
+
+.product__card {
+  border: 1px solid #ccc;
+  &__img__wrapper {
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  &__content {
+    height: 100%;
+    background: linear-gradient(180deg, #ecfafc 0%, #ffffff 100%);
+
+    &__name {
+      color: rgb(57, 57, 57);
+    }
+
+    &__price {
+      color: $primary;
+    }
+
+    &__cart__add {
+      background-color: $primary;
+      color: white;
+      border: none;
+      padding: 7px 11px;
+      border-radius: 5px;
+      width: 100%;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        background-color: #159a94;
+      }
+    }
+  }
+}
