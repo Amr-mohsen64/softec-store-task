@@ -1,14 +1,13 @@
 <section class="product__card">
-    <div class="product__card__img__wrapper">
-        <img src="https://www.decolore.net/wp-content/uploads/2017/04/product-mock-up-set-2.jpg" alt="">
+  <div class="product__card__img__wrapper">
+    <img [src]="product?.ProductImg" [alt]="product?.ProductName">
+  </div>
+  <div class="product__card__content p-3">
+    <h5 class="product__card__content__name">{{product?.ProductName}}</h5>
+    <div class="d-flex justify-content-between align-items-center">
+      <p class=" fw-bold product__card__content__price">{{product?.ProductPrice | currency}}</p>
+      <p class="fw-bold">QTY: {{product?.AvailablePieces}}</p>
     </div>
-    <div class="product__card__content p-3">
-        <h5 class="product__card__content__name">Product Name</h5>
-        <div class="d-flex justify-content-between align-items-center">
-            <p class=" fw-bold product__card__content__price">2.22$</p>
-            <p class="fw-bold">QTY: 24</p>
-        </div>
-        <button class="product__card__content__cart__add">Add To Cart</button>
-
-    </div>
+    <button class="product__card__content__cart__add">Add To Cart</button>
+  </div>
 </section>
