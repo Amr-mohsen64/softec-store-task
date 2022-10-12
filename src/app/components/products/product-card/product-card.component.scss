@@ -24,6 +24,18 @@
       color: $primary;
     }
 
+    &__edit__wrapper {
+      position: relative;
+
+      &__update {
+        cursor: pointer;
+        font-size: 30px;
+        position: absolute;
+        right: 10px;
+        color: #159a94;
+      }
+    }
+
     &__cart__add {
       background-color: $primary;
       color: white;

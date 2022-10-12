@@ -8,7 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductCardComponent } from './components/products/product-card/product-card.component';
 import { ProductsComponent } from './components/products/products/products.component';
-import { ProductEditModalComponent } from './components/products/product-edit-modal/product-edit-modal.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,9 +16,14 @@ import { ProductEditModalComponent } from './components/products/product-edit-mo
     ProductCardComponent,
     ProductsComponent,
     FooterComponent,
-    ProductEditModalComponent,
   ],
-  imports: [BrowserModule, NgbModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    NgbModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
