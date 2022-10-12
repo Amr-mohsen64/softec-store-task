@@ -29,4 +29,8 @@ export class ProductCardComponent implements OnInit {
     this.product!.AvailablePieces = quantity;
     this.editQuantityMode = false;
   }
+
+  onAddToCart() {
+    console.log(this.product);
+  }
 }

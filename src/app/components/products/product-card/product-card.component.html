@@ -14,7 +14,7 @@
       <p class="fw-bold" *ngIf="!editQuantityMode">QTY: {{product?.AvailablePieces}}</p>
     </div>
     <div class="d-flex justify-content-between align-items-center">
-      <button class="product__card__content__cart__add" [ngClass]="isEdit ? 'w-75' : 'w-100'">Add To
+      <button class="product__card__content__cart__add" [ngClass]="isEdit ? 'w-75' : 'w-100'" (click)="onAddToCart()">Add To
         Cart</button>
       <i class="fa fa-pencil product__card__content__cart__edit" aria-hidden="true" (click)="onEditProductQuantity()"
         *ngIf="isEdit"></i>
