@@ -1,0 +1,24 @@
+<section class="product__card">
+  <div class="product__card__img__wrapper">
+    <img [src]="product?.ProductImg" [alt]="product?.ProductName">
+  </div>
+  <div class="product__card__content p-3" [ngClass]="{'highlighted':product!.AvailablePieces < 5}">
+    <h5 class="product__card__content__name">{{product?.ProductName}}</h5>
+    <div class="d-flex justify-content-between align-items-center">
+      <p class=" fw-bold product__card__content__price">{{product?.ProductPrice | currency}}</p>
+      <div *ngIf="editQuantityMode" class="product__card__content__edit__wrapper">
+        <input type="text" placeholder="qunatyiy" [(ngModel)]="product!.AvailablePieces" #quantity>
+        <i class="fa fa-angle-right product__card__content__edit__wrapper__update" aria-hidden="true"
+          (click)="onUpdateProductQuantity(quantity.value)"></i>
+      </div>
+      <p class="fw-bold" *ngIf="!editQuantityMode">QTY: {{product?.AvailablePieces}}</p>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <button class="product__card__content__cart__add" [ngClass]="isEdit ? 'w-75' : 'w-100'" (click)="onAddToCart()">Add To
+        Cart</button>
+      <i class="fa fa-pencil product__card__content__cart__edit" aria-hidden="true" (click)="onEditProductQuantity()"
+        *ngIf="isEdit"></i>
+    </div>
+
+  </div>
+</section>

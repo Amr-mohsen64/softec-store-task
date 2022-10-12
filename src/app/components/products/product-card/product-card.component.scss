@@ -1,0 +1,58 @@
+@import "../../../../assets/scss/variables.scss";
+
+.product__card {
+  border: 1px solid #ccc;
+  &__img__wrapper {
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  &__content {
+    height: 100%;
+    background-color: linear-gradient(180deg, #ecfafc 0%, #ffffff 100%);
+
+    &.highlighted {
+      background-color: rgb(235 255 218);
+    }
+
+    &__name {
+      color: rgb(57, 57, 57);
+    }
+
+    &__price {
+      color: $primary;
+    }
+
+    &__edit__wrapper {
+      position: relative;
+
+      &__update {
+        cursor: pointer;
+        font-size: 30px;
+        position: absolute;
+        right: 10px;
+        color: #159a94;
+      }
+    }
+
+    &__cart__add {
+      background-color: $primary;
+      color: white;
+      border: none;
+      padding: 7px 11px;
+      border-radius: 5px;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        background-color: #159a94;
+      }
+    }
+
+    &__cart__edit {
+      background-color: $bg-primary;
+      padding: 12px;
+      border-radius: 9px;
+      cursor: pointer;
+    }
+  }
+}
