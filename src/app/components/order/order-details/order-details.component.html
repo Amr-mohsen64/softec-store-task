@@ -1,6 +1,34 @@
 <section class="orders py-3 py-md-4 ">
   <div class="container-fluid">
     <h1 class="px-2 py-2 py-md-4">Orders Details</h1>
-      
+    <div class="m-3 p-0" id="card">
+      <div class="card-body">
+        <h5 class="p-2">Products</h5>
+        <div class=" box-shadow">
+          <div class="row p-2" *ngFor="let product of products">
+            <div class="col-2">
+              <img class="img-fluid" src="https://www.decolore.net/wp-content/uploads/2017/04/product-mock-up-set-2.jpg"
+                alt="">
+            </div>
+            <div class="col-9">
+              <div class="row">
+                <p class="col-6 fw-bold">Prduct Name : {{product.ProductName}}</p>
+                <p class="col-6 fw-bold">Unit Price: {{product.ProductPrice}}</p>
+                <p class="col-6 fw-bold">quantiy: {{product.Quantity}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 mt-4 box-shadow">
+          <h2>User Details</h2>
+          <div class="row">
+            <p class="col-6">Name: {{user?.Name}}</p>
+            <p class="col-6">Phone: {{user?.Email}}</p>
+            <p class="col-6">Email: {{user?.Phone}}</p>
+            <p class="col-6">Address: {{user?.Address}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

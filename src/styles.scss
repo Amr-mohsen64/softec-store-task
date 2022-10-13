@@ -2,3 +2,9 @@
 @import "assets/scss/variables.scss";
 @import "~bootstrap/scss/bootstrap";
 @import "../node_modules/font-awesome/scss/font-awesome.scss";
+
+.box-shadow {
+  box-shadow: -3px 5px 81px -17px rgba(0,0,0,0.33);
+  -webkit-box-shadow: -3px 5px 81px -17px rgba(0,0,0,0.33);
+  -moz-box-shadow: -3px 5px 81px -17px rgba(0,0,0,0.33);
+}

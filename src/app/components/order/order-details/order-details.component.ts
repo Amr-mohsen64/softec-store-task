@@ -1,7 +1,9 @@
+import { Product } from './../../../models/product.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Order } from 'src/app/models/order.model';
 import { OrderService } from 'src/app/services/order.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-order-details',
@@ -9,8 +11,10 @@ import { OrderService } from 'src/app/services/order.service';
   styleUrls: ['./order-details.component.scss'],
 })
 export class OrderDetailsComponent implements OnInit {
-  order: Order | null = null;
+  order: Order | undefined = undefined;
   id: number = 0;
+  products: Product[] = [];
+  user: User | undefined = undefined;
 
   constructor(
     private orderService: OrderService,
@@ -20,9 +24,26 @@ export class OrderDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
-      this.orderService
-        .getOrder(this.id)
-        .subscribe((order) => console.log(order));
+      this.orderService.getOrder(this.id).subscribe((order) => {
+        this.order = order;
+        console.log(this.order);
+
+        this.order?.Products?.map((product) => {
+          this.orderService
+            .getOrderProduct(product.ProductId)
+            .subscribe((p) => {
+              this.products.push({ ...(p as Product), ...product });
+            });
+        });
+
+        this.getUser(this.order!.UserId as string);
+        console.log(this.user);
+        
+      });
     });
+  }
+
+  getUser(id: string) {
+    this.orderService.getUser(id).subscribe((u) => (this.user = u));
   }
 }

@@ -1,0 +1,25 @@
+<a [routerLink]="['/orders', order?.OrderId]">
+  <div class="card-body">
+    <div class="row mb-3">
+      <div class="col-6 me-1">
+        <label>
+          <b>user: </b> {{user?.Name}}
+      
+        </label>
+      </div>
+      <div class="col-5 mx-1 px-3">
+        <label>
+          <!-- <b>Date:</b> {{order?.OrderDate | date}} -->
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 mx-1">
+        <b>payment Type: </b>{{order?.PaymentType}}
+      </div>
+      <div class="col-5 mx-1">
+        <!-- <b>Order Total:</b> {{orderTotal| currency:'usd':'2'}} -->
+      </div>
+    </div>
+  </div>
+</a>

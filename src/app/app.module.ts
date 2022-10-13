@@ -11,6 +11,7 @@ import { ProductsComponent } from './components/products/products/products.compo
 import { FormsModule } from '@angular/forms';
 import { OrdersComponent } from './components/order/orders/orders.component';
 import { OrderDetailsComponent } from './components/order/order-details/order-details.component';
+import { OrderComponent } from './components/order/orders/order/order.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { OrderDetailsComponent } from './components/order/order-details/order-de
     FooterComponent,
     OrdersComponent,
     OrderDetailsComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,

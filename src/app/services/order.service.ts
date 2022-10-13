@@ -1,3 +1,4 @@
+import { Product } from './../models/product.model';
 import { Order } from './../models/order.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -10,7 +11,8 @@ import { User } from '../models/user.model';
 })
 export class OrderService {
   ordersUrl = environment.ordersUrl;
-  usersUrl = environment.productsUrl;
+  usersUrl = environment.usersUrl;
+  productsUrl = environment.productsUrl;
   users = new BehaviorSubject<User[]>([]);
 
   constructor(private http: HttpClient) {}
@@ -38,7 +40,15 @@ export class OrderService {
   getUser(id: string) {
     return this.fetchUsers().pipe(
       map((users) => {
-        return users.find((user) => user.Id == id);
+        return users.find((user: User) => user.Id == id);
+      })
+    );
+  }
+
+  getOrderProduct(productId: number) {
+    return this.http.get<Product[]>(this.productsUrl).pipe(
+      map((products: Product[]) => {
+        return products.find((product) => (product.ProductId === productId));
       })
     );
   }
