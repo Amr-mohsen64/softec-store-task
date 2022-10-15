@@ -18,7 +18,7 @@ const appRoutes: Routes = [
   {
     path: 'orders',
     component: OrdersComponent,
-    resolve: [OrdersResolverService],
+    resolve: [OrdersResolverService, ProductsResolverService],
   },
   {
     path: 'orders/:id',

@@ -23,7 +23,6 @@ export class ProductService {
   }
 
   getProducts() {
-    console.log(this.products);
     return this.products.slice();
   }
 
@@ -33,5 +32,11 @@ export class ProductService {
     );
     product!.AvailablePieces = +newQuantity;
     console.log(product);
+  }
+
+  getProduct(productId: number) {
+    return this.getProducts().find(
+      (product) => product.ProductId === productId
+    );
   }
 }

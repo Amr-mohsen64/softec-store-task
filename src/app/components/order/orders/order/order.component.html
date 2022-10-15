@@ -4,12 +4,12 @@
       <div class="col-6 me-1">
         <label>
           <b>user: </b> {{user?.Name}}
-      
+
         </label>
       </div>
       <div class="col-5 mx-1 px-3">
         <label>
-          <!-- <b>Date:</b> {{order?.OrderDate | date}} -->
+          <b>Date:</b> {{order?.OrderDate | date}}
         </label>
       </div>
     </div>
@@ -18,7 +18,7 @@
         <b>payment Type: </b>{{order?.PaymentType}}
       </div>
       <div class="col-5 mx-1">
-        <b>Order Total:</b> {{order?.totalPrice| currency:'usd':'2'}}
+        <b>Order Total:</b> {{order?.totalPrice| currency}}
       </div>
     </div>
   </div>
