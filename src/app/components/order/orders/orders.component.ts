@@ -16,8 +16,14 @@ export class OrdersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.dataStorageService
-      .getOrders()
-      .subscribe((orders: Order[]) => (this.orders = orders));
+    // this.orderService.fetchOrders().subscribe((orders: Order[]) => {
+    //   this.orders = orders;
+    //   console.log(this.orders);
+    // });
+
+    this.orderService.ordersChanged.subscribe(
+      (orders) => (this.orders = orders)
+    );
+    this.orders = this.orderService.getOrderss();
   }
 }

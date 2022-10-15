@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { OrderDetailsComponent } from './components/order/order-details/order-details.component';
 import { OrdersComponent } from './components/order/orders/orders.component';
 import { ProductsComponent } from './components/products/products/products.component';
+import { OrdersResolverService } from './services/orders-resolver.service';
 import { ProductsResolverService } from './services/products-resolver.service';
 
 const appRoutes: Routes = [
@@ -14,8 +15,16 @@ const appRoutes: Routes = [
     pathMatch: 'full',
     resolve: [ProductsResolverService],
   },
-  { path: 'orders', component: OrdersComponent },
-  { path: 'orders/:id', component: OrderDetailsComponent },
+  {
+    path: 'orders',
+    component: OrdersComponent,
+    resolve: [OrdersResolverService],
+  },
+  {
+    path: 'orders/:id',
+    component: OrderDetailsComponent,
+    resolve: [OrdersResolverService],
+  },
 ];
 
 @NgModule({

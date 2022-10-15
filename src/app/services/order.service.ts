@@ -4,7 +4,7 @@ import { Order } from './../models/order.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, pipe, Subject, tap } from 'rxjs';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -13,11 +13,26 @@ import { User } from '../models/user.model';
 export class OrderService {
   productsUrl = environment.productsUrl;
   users = new BehaviorSubject<User[]>([]);
+  orders: Order[] = [];
+  ordersChanged: Subject<Order[]> = new Subject<Order[]>();
 
   constructor(
     private http: HttpClient,
     private dataStorageService: DataStorageService
   ) {}
+
+  fetchOrders(): Observable<Order[]> {
+    return this.dataStorageService.getOrders().pipe(
+      tap((orders) => {
+        this.orders = orders;
+        // this.ordersChanged.next(orders);
+      })
+    );
+  }
+
+  getOrderss() {
+    return this.orders;
+  }
 
   getUsers() {
     this.dataStorageService
@@ -25,12 +40,16 @@ export class OrderService {
       .subscribe((users) => this.users.next(users));
   }
 
+  // getOrder(orderId: number) {
+  //   return this.dataStorageService.getOrders().pipe(
+  //     map((orders) => {
+  //       return orders.find((order) => order.OrderId == orderId);
+  //     })
+  //   );
+  // }
+
   getOrder(orderId: number) {
-    return this.dataStorageService.getOrders().pipe(
-      map((orders) => {
-        return orders.find((order) => order.OrderId == orderId);
-      })
-    );
+    return this.orders.find((order) => order.OrderId == orderId);
   }
 
   getUser(id: string) {
@@ -47,5 +66,10 @@ export class OrderService {
         return products.find((product) => product.ProductId === productId);
       })
     );
+  }
+
+  addOrder(order: Order) {
+    this.orders.unshift(order);
+    this.ordersChanged.next(this.orders);
   }
 }

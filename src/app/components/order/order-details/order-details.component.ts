@@ -24,19 +24,30 @@ export class OrderDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
-      this.orderService.getOrder(this.id).subscribe((order) => {
-        this.order = order;
-        console.log(this.order);
+      // this.orderService.getOrder(this.id).subscribe((order) => {
+      //   this.order = order;
+      //   console.log(this.order);
 
-        this.order?.Products?.map((product) => {
-          this.orderService
-            .getOrderProduct(product.ProductId)
-            .subscribe((p) => {
-              this.products.push({ ...(p as Product), ...product });
-            });
+      //   this.order?.Products?.map((product) => {
+      //     this.orderService
+      //       .getOrderProduct(product.ProductId)
+      //       .subscribe((p) => {
+      //         this.products.push({ ...(p as Product), ...product });
+      //       });
+      //   });
+      //   this.getUser(this.order!.UserId as string);
+      // });
+
+      this.order = this.orderService.getOrder(this.id);
+
+      console.log(this.order);
+
+      this.order?.Products?.map((product) => {
+        this.orderService.getOrderProduct(product.ProductId).subscribe((p) => {
+          this.products.push({ ...(p as Product), ...product });
         });
-        this.getUser(this.order!.UserId as string);
       });
+      this.getUser(this.order!.UserId as string);
     });
   }
 

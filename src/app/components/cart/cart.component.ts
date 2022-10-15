@@ -53,6 +53,7 @@ export class CartComponent implements OnInit {
     };
 
     console.log(newOrder);
+    this.orderService.addOrder(newOrder)
     this.emptyCart();
   }
 

@@ -2,6 +2,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { CartComponent } from './../cart/cart.component';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,13 +15,15 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private offcanvasService: NgbOffcanvas,
-    private cartService: CartService
+    private cartService: CartService,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
     this.cartService.productsCount.subscribe(
       (count) => (this.cartCount = count)
     );
+    this.orderService.fetchOrders().subscribe();
   }
 
   openCart() {
