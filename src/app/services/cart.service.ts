@@ -9,8 +9,8 @@ export class CartService {
   cartProducts: Product[] = [];
   cartProductsChanged = new Subject<Product[]>();
   productsCount = new Subject<number>();
-  cartTotalPrice = new Subject<number>();
-
+  cartTotalPriceChanged = new Subject<number>();
+  totalPrice = 0;
   constructor() {}
 
   addProductToCart(product: Product) {
@@ -26,11 +26,11 @@ export class CartService {
 
   setTotalPrice() {
     let price = 0;
-    this.cartProducts.forEach((product) => {
-      return (price += product.ProductPrice);
+    this.cartProducts.map((product) => {
+      return (price += product.ProductPrice * product.Quantity);
     });
-
-    this.cartTotalPrice.next(price);
+    this.cartTotalPriceChanged.next(price);
+    this.totalPrice = price;
   }
 
   clearCart() {

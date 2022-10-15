@@ -26,19 +26,25 @@ export class CartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cartService.cartProductsChanged.subscribe(
-      (products) => (this.cartProducts = products)
-    );
+    this.cartService.cartProductsChanged.subscribe((products) => {
+      this.cartProducts = products;
+    });
     this.cartProducts = this.cartService.cartProducts;
-    this.cartService.cartTotalPrice.subscribe(
-      (price) => (this.totalPrice = price)
-    );
+
     this.orderService.getUsers();
     this.orderService.users.subscribe((users) => {
       this.users = users;
       this.selectedUserId = this.users[0]?.Id;
     });
-    console.log(this.totalPrice);
+    this.setCartTotalPrice();
+  }
+
+  setCartTotalPrice() {
+    this.totalPrice = this.cartService.totalPrice;
+    this.cartService.cartTotalPriceChanged.subscribe((price) => {
+      this.totalPrice = +price;
+      console.log(price);
+    });
   }
 
   onUsersChange(userId: string) {
@@ -52,6 +58,7 @@ export class CartComponent implements OnInit {
       UserId: this.selectedUserId,
       OrderDate: new Date().toString(),
       PaymentType: this.paymentType,
+      totalPrice: this.totalPrice,
     };
 
     console.log(newOrder);
