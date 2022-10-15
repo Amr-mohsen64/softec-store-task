@@ -35,10 +35,7 @@ export class OrderDetailsComponent implements OnInit {
               this.products.push({ ...(p as Product), ...product });
             });
         });
-
         this.getUser(this.order!.UserId as string);
-        console.log(this.user);
-        
       });
     });
   }
