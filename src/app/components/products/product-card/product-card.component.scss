@@ -56,3 +56,11 @@
     }
   }
 }
+
+button:disabled {
+  background-color: #cde7e5;
+  cursor: not-allowed;
+  &:hover {
+    background-color: #cde7e5;
+  }
+}
