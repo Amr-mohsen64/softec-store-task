@@ -1,3 +1,4 @@
+import { DataStorageService } from './data-storage.service';
 import { Product } from './../models/product.model';
 import { Order } from './../models/order.model';
 import { HttpClient } from '@angular/common/http';
@@ -10,27 +11,22 @@ import { User } from '../models/user.model';
   providedIn: 'root',
 })
 export class OrderService {
-  ordersUrl = environment.ordersUrl;
-  usersUrl = environment.usersUrl;
   productsUrl = environment.productsUrl;
   users = new BehaviorSubject<User[]>([]);
 
-  constructor(private http: HttpClient) {}
-
-  getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(this.ordersUrl);
-  }
-
-  fetchUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl);
-  }
+  constructor(
+    private http: HttpClient,
+    private dataStorageService: DataStorageService
+  ) {}
 
   getUsers() {
-    this.fetchUsers().subscribe((users) => this.users.next(users));
+    this.dataStorageService
+      .fetchUsers()
+      .subscribe((users) => this.users.next(users));
   }
 
   getOrder(orderId: number) {
-    return this.getOrders().pipe(
+    return this.dataStorageService.getOrders().pipe(
       map((orders) => {
         return orders.find((order) => order.OrderId == orderId);
       })
@@ -38,7 +34,7 @@ export class OrderService {
   }
 
   getUser(id: string) {
-    return this.fetchUsers().pipe(
+    return this.dataStorageService.fetchUsers().pipe(
       map((users) => {
         return users.find((user: User) => user.Id == id);
       })
@@ -48,7 +44,7 @@ export class OrderService {
   getOrderProduct(productId: number) {
     return this.http.get<Product[]>(this.productsUrl).pipe(
       map((products: Product[]) => {
-        return products.find((product) => (product.ProductId === productId));
+        return products.find((product) => product.ProductId === productId);
       })
     );
   }

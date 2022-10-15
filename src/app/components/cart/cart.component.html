@@ -1,11 +1,25 @@
 <div class="offcanvas-header">
-  <h5 class="offcanvas-title">Offcanvas</h5>
+  <h5 class="offcanvas-title">Cart</h5>
   <button type="button" class="btn-close text-reset" aria-label="Close"
     (click)="activeOffcanvas.dismiss('Cross click')"></button>
 </div>
 <div class="offcanvas-body">
-  <div>
-    Hello
-  </div>
+  <section class="cart__products">
+    <div class="card mt-2 p-2" *ngFor="let product of cartProducts">
+      <div class=" row">
+        <div class="col-5">
+          <img class="img-fluid" [src]="product.ProductImg" alt="">
+        </div>
+        <div class="col-7">
+          <div class="cart__products__content">
+            <h5>{{product.ProductName}}</h5>
+            <p>{{product.ProductPrice| currency}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h2 class="p-2">Order Total : <span>{{totalPrice}}</span></h2>
+  </section>
   <button type="button" class="btn btn-outline-dark" (click)="activeOffcanvas.close('Close click')">Close</button>
+  <button type="button" class="btn btn-outline-primary ms-2" (click)="activeOffcanvas.close('Close click')">Order</button>
 </div>

@@ -1,3 +1,4 @@
+import { DataStorageService } from './../../../services/data-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { Order } from './../../../models/order.model';
 import { OrderService } from './../../../services/order.service';
@@ -8,12 +9,15 @@ import { OrderService } from './../../../services/order.service';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
-  orders:Order[] = []
-  constructor(private orderService: OrderService) {}
+  orders: Order[] = [];
+  constructor(
+    private orderService: OrderService,
+    private dataStorageService: DataStorageService
+  ) {}
 
   ngOnInit(): void {
-    this.orderService
+    this.dataStorageService
       .getOrders()
-      .subscribe((orders: Order[]) => this.orders = orders);
+      .subscribe((orders: Order[]) => (this.orders = orders));
   }
 }

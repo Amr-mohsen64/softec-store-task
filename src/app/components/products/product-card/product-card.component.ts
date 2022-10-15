@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
+import { ProductService } from 'src/app/services/product.service';
 import { Product } from './../../../models/product.model';
 
 @Component({
@@ -11,7 +13,10 @@ export class ProductCardComponent implements OnInit {
   isEdit: boolean = false;
   editQuantityMode: boolean = false;
 
-  constructor() {}
+  constructor(
+    private productsService: ProductService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.setIsEdit();
@@ -25,12 +30,12 @@ export class ProductCardComponent implements OnInit {
     this.editQuantityMode = true;
   }
 
-  onUpdateProductQuantity(quantity: any) {
-    this.product!.AvailablePieces = quantity;
+  onUpdateProductQuantity(quantity: any, productId: number) {
     this.editQuantityMode = false;
+    this.productsService.updateProduct(quantity, productId);
   }
 
   onAddToCart() {
-    console.log(this.product);
+    this.cartService.addProductToCart(this.product as Product);
   }
 }
