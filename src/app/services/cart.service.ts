@@ -33,4 +33,10 @@ export class CartService {
 
     this.cartTotalPrice.next(price);
   }
+
+  clearCart() {
+    this.cartProducts = [];
+    this.cartProductsChanged.next([]);
+    this.productsCount.next(0);
+  }
 }

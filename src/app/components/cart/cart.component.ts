@@ -5,6 +5,7 @@ import { Product } from 'src/app/models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 import { Order } from 'src/app/models/order.model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -20,7 +21,8 @@ export class CartComponent implements OnInit {
   constructor(
     public activeOffcanvas: NgbActiveOffcanvas,
     private cartService: CartService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -53,13 +55,17 @@ export class CartComponent implements OnInit {
     };
 
     console.log(newOrder);
-    this.orderService.addOrder(newOrder)
+    this.orderService.addOrder(newOrder);
     this.emptyCart();
+
+    setTimeout(() => {
+      this.router.navigate(['/orders']);
+      this.activeOffcanvas.close();
+    }, 400);
   }
 
   emptyCart() {
-    this.cartService.productsCount.next(0);
     this.cartProducts = [];
-    this.cartService.cartProducts = [];
+    this.cartService.clearCart();
   }
 }
