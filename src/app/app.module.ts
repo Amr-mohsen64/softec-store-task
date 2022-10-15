@@ -9,6 +9,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductCardComponent } from './components/products/product-card/product-card.component';
 import { ProductsComponent } from './components/products/products/products.component';
 import { FormsModule } from '@angular/forms';
+import { OrdersComponent } from './components/order/orders/orders.component';
+import { OrderDetailsComponent } from './components/order/order-details/order-details.component';
+import { OrderComponent } from './components/order/orders/order/order.component';
+import { CartComponent } from './components/cart/cart.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +21,10 @@ import { FormsModule } from '@angular/forms';
     ProductCardComponent,
     ProductsComponent,
     FooterComponent,
+    OrdersComponent,
+    OrderDetailsComponent,
+    OrderComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

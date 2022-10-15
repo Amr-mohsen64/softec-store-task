@@ -9,7 +9,7 @@
       <div *ngIf="editQuantityMode" class="product__card__content__edit__wrapper">
         <input type="text" placeholder="qunatyiy" [(ngModel)]="product!.AvailablePieces" #quantity>
         <i class="fa fa-angle-right product__card__content__edit__wrapper__update" aria-hidden="true"
-          (click)="onUpdateProductQuantity(quantity.value)"></i>
+          (click)="onUpdateProductQuantity(quantity.value , product!.ProductId)"></i>
       </div>
       <p class="fw-bold" *ngIf="!editQuantityMode">QTY: {{product?.AvailablePieces}}</p>
     </div>
