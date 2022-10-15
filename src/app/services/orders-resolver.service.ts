@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   Resolve,
-  RouterStateSnapshot,
+  RouterStateSnapshot
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { OrderService } from 'src/app/services/order.service';
 import { Order } from '../models/order.model';
-import { DataStorageService } from './data-storage.service';
 
 @Injectable({
   providedIn: 'root',

@@ -1,8 +1,8 @@
-import { CartService } from 'src/app/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
-import { CartComponent } from './../cart/cart.component';
+import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
+import { CartComponent } from './../cart/cart.component';
 
 @Component({
   selector: 'app-navbar',

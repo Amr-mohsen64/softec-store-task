@@ -3,22 +3,21 @@
     <div class="row mb-3">
       <div class="col-6 me-1">
         <label>
-          <b>user: </b> {{user?.Name}}
-
+          <b>User: </b><span class="text-primary fw-bold"> {{user?.Name}}</span>
         </label>
       </div>
       <div class="col-5 mx-1 px-3">
         <label>
-          <b>Date:</b> {{order?.OrderDate | date}}
+          <b>Date: </b><span class="text-primary fw-bold"> {{order?.OrderDate | date}}</span>
         </label>
       </div>
     </div>
     <div class="row">
       <div class="col-6 mx-1">
-        <b>payment Type: </b>{{order?.PaymentType}}
+        <b>Payment Type: </b><span class="text-primary fw-bold">{{order?.PaymentType}}</span>
       </div>
       <div class="col-5 mx-1">
-        <b>Order Total:</b> {{order?.totalPrice| currency}}
+        <b>Order Total: </b><span class="text-primary fw-bold">{{order?.totalPrice| currency}}</span>
       </div>
     </div>
   </div>

@@ -43,7 +43,6 @@ export class CartComponent implements OnInit {
     this.totalPrice = this.cartService.totalPrice;
     this.cartService.cartTotalPriceChanged.subscribe((price) => {
       this.totalPrice = +price;
-      console.log(price);
     });
   }
 
@@ -61,7 +60,6 @@ export class CartComponent implements OnInit {
       totalPrice: this.totalPrice,
     };
 
-    console.log(newOrder);
     this.orderService.addOrder(newOrder);
     this.emptyCart();
 

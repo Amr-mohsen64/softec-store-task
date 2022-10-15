@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
 import { Product } from '../models/product.model';
 @Injectable({
   providedIn: 'root',
@@ -11,11 +10,7 @@ export class ProductService {
   productChanged = new Subject<Product[]>();
   private products: Product[] = [];
 
-  constructor(private http: HttpClient) {}
-
-  // getProducts(): Observable<Product[]> {
-  //   return this.http.get<Product[]>(this.productsUrl);
-  // }
+  constructor() {}
 
   setProducts(products: Product[]) {
     this.products = products;
@@ -31,7 +26,6 @@ export class ProductService {
       (product) => product.ProductId == productId
     );
     product!.AvailablePieces = +newQuantity;
-    console.log(product);
   }
 
   getProduct(productId: number) {

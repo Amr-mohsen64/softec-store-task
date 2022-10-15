@@ -1,11 +1,11 @@
-import { DataStorageService } from './data-storage.service';
-import { Product } from './../models/product.model';
-import { Order } from './../models/order.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, map, Observable, Subject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { BehaviorSubject, map, Observable, pipe, Subject, tap } from 'rxjs';
 import { User } from '../models/user.model';
+import { Order } from './../models/order.model';
+import { Product } from './../models/product.model';
+import { DataStorageService } from './data-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +25,6 @@ export class OrderService {
     return this.dataStorageService.getOrders().pipe(
       tap((orders) => {
         this.orders = orders;
-        // this.ordersChanged.next(orders);
       })
     );
   }
@@ -39,14 +38,6 @@ export class OrderService {
       .fetchUsers()
       .subscribe((users) => this.users.next(users));
   }
-
-  // getOrder(orderId: number) {
-  //   return this.dataStorageService.getOrders().pipe(
-  //     map((orders) => {
-  //       return orders.find((order) => order.OrderId == orderId);
-  //     })
-  //   );
-  // }
 
   getOrder(orderId: number) {
     return this.orders.find((order) => order.OrderId == orderId);

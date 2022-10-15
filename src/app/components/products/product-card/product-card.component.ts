@@ -43,7 +43,6 @@ export class ProductCardComponent implements OnInit {
       ...(this.product as Product),
       Quantity: 1,
     });
-
     this.openCart();
 
     setTimeout(() => {
