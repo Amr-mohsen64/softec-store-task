@@ -3,7 +3,7 @@
   <button type="button" class="btn-close text-reset" aria-label="Close"
     (click)="activeOffcanvas.dismiss('Cross click')"></button>
 </div>
-<div class="offcanvas-body">
+<div class="offcanvas-body" *ngIf="cartProducts.length;else noProducts">
   <section class="cart__products">
     <div class="card mt-2 p-2" *ngFor="let product of cartProducts">
       <div class=" row">
@@ -19,7 +19,31 @@
       </div>
     </div>
     <h2 class="p-2">Order Total : <span>{{totalPrice}}</span></h2>
+
+    <div class="user-details">
+      <div class="row">
+        <div class="col-6">
+          <select name="users" id="" class="w-100 p-1" [(ngModel)]="selectedUserId"
+            (ngModelChange)="onUsersChange($event)">
+            <option *ngFor="let user of users" [ngValue]="user.Id">{{user.Name}}</option>
+
+          </select>
+
+        </div>
+        <div class="col-6">
+          <select name="payment" id="" class="w-100 p-1" [(ngModel)]="paymentType">
+            <option value="cash">cash</option>
+            <option value="online">online</option>
+          </select>
+        </div>
+      </div>
+    </div>
   </section>
-  <button type="button" class="btn btn-outline-dark" (click)="activeOffcanvas.close('Close click')">Close</button>
-  <button type="button" class="btn btn-outline-primary ms-2" (click)="activeOffcanvas.close('Close click')">Order</button>
+  <div class="mt-2">
+    <button type="button" class="btn btn-outline-dark" (click)="activeOffcanvas.close('Close click')">Close</button>
+    <button type="button" class="btn btn-outline-primary ms-2" (click)="onAddOrder()">Order</button>
+  </div>
 </div>
+<ng-template class="alert" #noProducts>
+  <div class="alert alert-info">Your Cart Is Empty</div>
+</ng-template>
