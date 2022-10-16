@@ -11,6 +11,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 > - The orders page list all orders added to the system.
 > - The order details page show all details of single order.
 
+## Hosting URL: **https://softec-task-store.web.app**
+
 ## Project architecture
 >   - app
 >     - app component
@@ -47,8 +49,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 >     - style.scss
 
 ## For styling
--  I used scss pre compiler for styling.
-- Also i used BEM css design pattern which knowen as block element modifier for styling which gives less code duplication.
+> -  I used scss pre compiler for styling.
+> - Also i used BEM css design pattern which knowen as block element modifier for styling which gives less code duplication.
 
 ## Development server
 
